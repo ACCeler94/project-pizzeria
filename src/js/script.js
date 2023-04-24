@@ -158,9 +158,7 @@
           const option = param.options[optionId];
 
           // calculate price based on chosen options
-          if (option.default && formData[paramId].includes(optionId)) {
-            price += 0;
-          } else if (option.default && !formData[paramId].includes(optionId)) {
+          if (option.default && !formData[paramId].includes(optionId)) {
             price -= option.price;
           } else if (!option.default && formData[paramId].includes(optionId)) {
             price += option.price;
