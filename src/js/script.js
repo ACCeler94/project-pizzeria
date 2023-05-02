@@ -429,6 +429,9 @@
       thisCart.dom.subtotalPrice = thisCart.dom.wrapper.querySelector(select.cart.subtotalPrice);
       thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelectorAll(select.cart.totalPrice);
       thisCart.dom.totalNumber = thisCart.dom.wrapper.querySelector(select.cart.totalNumber);
+      thisCart.dom.form = thisCart.dom.wrapper.querySelector(select.cart.form);
+      thisCart.dom.address = thisCart.dom.form.querySelector(select.cart.address);
+      thisCart.dom.phone = thisCart.dom.form.querySelector(select.cart.phone);
     }
 
     initActions() {
@@ -443,6 +446,44 @@
       });
 
       thisCart.dom.productList.addEventListener('remove', (event) => thisCart.remove(event.detail.cartProduct));
+
+      thisCart.dom.form.addEventListener('submit', event => {
+        event.preventDefault();
+
+        thisCart.sendOrder();
+      })
+    }
+
+    sendOrder() {
+      const thisCart = this;
+
+      const url = settings.db.url + '/' + settings.db.orders;
+      const payload = {
+        address: thisCart.dom.address.value,
+        phone: thisCart.dom.phone.value,
+        totalPrice: thisCart.totalPrice,
+        subtotalPrice: thisCart.subtotalPrice,
+        totalNumber: thisCart.totalNumber,
+        products: []
+      }
+
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      };
+
+      for (let prod of thisCart.products) {
+        payload.products.push(prod.getData());
+      }
+
+
+
+      fetch(url, options)
+        .then(response => response.json())
+        .then(parsedResponse => console.log('parsedResponse', parsedResponse))
     }
 
     add(menuProduct) {
@@ -490,9 +531,11 @@
       thisCart.dom.totalPrice.forEach(element => {
         element.innerHTML = thisCart.totalPrice;
 
-      });
+      }
+      );
 
-
+      thisCart.subtotalPrice = subtotalPrice
+      thisCart.totalNumber = totalNumber;
       console.log('totalNumber', totalNumber);
       console.log('subtotal', subtotalPrice);
       console.log('totalPrice', thisCart.totalPrice);
@@ -595,6 +638,21 @@
         thisCartProduct.remove()
       });
 
+    }
+
+    getData() {
+      const thisCartProduct = this;
+
+      const cartProductData = {
+        id: thisCartProduct.id,
+        amount: thisCartProduct.amount,
+        price: thisCartProduct.price,
+        priceSingle: thisCartProduct.priceSingle,
+        name: thisCartProduct.name,
+        params: thisCartProduct.params,
+      }
+
+      return cartProductData;
     }
   }
 
