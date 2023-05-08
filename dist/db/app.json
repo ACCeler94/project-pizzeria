@@ -204,20 +204,20 @@
   ],
   "orders": [
     {
-      "address": "aaa",
-      "phone": "ddddd",
-      "totalPrice": 49,
-      "subtotalPrice": 29,
-      "totalNumber": 2,
+      "address": "",
+      "phone": "",
+      "totalPrice": 0,
+      "subtotalPrice": null,
+      "totalNumber": null,
       "products": [],
       "id": 1
     },
     {
-      "address": "aaa",
-      "phone": "ddddd",
-      "totalPrice": 29,
-      "subtotalPrice": 9,
-      "totalNumber": 1,
+      "address": "",
+      "phone": "",
+      "totalPrice": 70,
+      "subtotalPrice": 50,
+      "totalNumber": 4,
       "products": [],
       "id": 2
     }
