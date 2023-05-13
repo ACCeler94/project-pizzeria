@@ -9,6 +9,7 @@ export const select = {
     cart: '#cart',
     pages: '#pages',
     booking: '.booking-wrapper',
+    tables: '.floor-plan',
   },
   all: {
     menuProducts: '#product-list > .product',
@@ -84,6 +85,8 @@ export const classNames = {
     loading: 'loading',
     tableBooked: 'booked',
     tableSelected: 'selected',
+    table: 'table',
+    floorPlan: 'floor-plan'
   },
   nav: {
     active: 'active',

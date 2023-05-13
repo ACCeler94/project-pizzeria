@@ -119,6 +119,45 @@ class Booking {
     }
   }
 
+  clearSelected() {
+    // remove class selected from all tables and revert thisBooking.selectedTable back to an empty array
+    const thisBooking = this;
+    thisBooking.dom.tablesContainer.querySelectorAll('.' + classNames.booking.table).forEach(table => {
+      table.classList.remove(classNames.booking.tableSelected)
+    });
+    thisBooking.selectedTable = [];
+  }
+
+  initTables(event) {
+    const thisBooking = this;
+
+    if (event.target.classList.contains(classNames.booking.tableSelected)) {
+      thisBooking.clearSelected()
+
+    } else if (event.target.classList.contains(classNames.booking.table) && !event.target.classList.contains(classNames.booking.tableBooked)) {
+      thisBooking.clearSelected()
+
+      event.target.classList.add(classNames.booking.tableSelected);
+
+      const tableId = event.target.getAttribute(settings.booking.tableIdAttribute);
+      thisBooking.selectedTable.push(tableId);
+
+      console.log('selected table id', thisBooking.selectedTable)
+
+      // clear selection when floor is clicked
+    } else if (event.target.classList.contains(classNames.booking.floorPlan)) {
+      thisBooking.clearSelected();
+
+    } else if (event.target.classList.contains(classNames.booking.tableBooked)) {
+      const alert = document.getElementById('alert');
+      alert.style.display = 'block';
+      setTimeout(() => {
+        alert.style.display = 'none';
+      }, 3000);
+    }
+  }
+
+
   updateDOM() {
     const thisBooking = this;
 
@@ -151,7 +190,7 @@ class Booking {
         table.classList.remove(classNames.booking.tableBooked)
       }
     }
-
+    thisBooking.clearSelected();
   }
 
   render(wrapper) {
@@ -168,6 +207,7 @@ class Booking {
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+    thisBooking.dom.tablesContainer = thisBooking.dom.wrapper.querySelector(select.containerOf.tables);
 
   }
 
@@ -178,7 +218,14 @@ class Booking {
     thisBooking.hoursAmountWidget = new AmountWidget(thisBooking.dom.hoursAmount)
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
     thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
+    thisBooking.tablesWidget = thisBooking.dom.tablesContainer;
+    thisBooking.selectedTable = [];
 
+
+    thisBooking.tablesWidget.addEventListener('click', (event) => {
+      console.log(event.target)
+      thisBooking.initTables(event);
+    })
 
     //thisBooking.dom.peopleAmount.addEventListener('updated', () => { })
 
