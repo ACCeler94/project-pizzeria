@@ -9,6 +9,7 @@ class Booking {
     const thisBooking = this;
 
     thisBooking.render(wrapper);
+    thisBooking.getElements();
     thisBooking.initWidgets();
     thisBooking.getData();
   }
@@ -94,7 +95,7 @@ class Booking {
         }
       }
     }
-    //console.log(thisBooking.booked)
+    console.log('thisBooking.booked', thisBooking.booked)
     thisBooking.updateDOM();
   }
 
@@ -125,7 +126,7 @@ class Booking {
     thisBooking.dom.tablesContainer.querySelectorAll('.' + classNames.booking.table).forEach(table => {
       table.classList.remove(classNames.booking.tableSelected)
     });
-    thisBooking.selectedTable = [];
+    thisBooking.selectedTable = null;
   }
 
   initTables(event) {
@@ -140,7 +141,8 @@ class Booking {
       event.target.classList.add(classNames.booking.tableSelected);
 
       const tableId = event.target.getAttribute(settings.booking.tableIdAttribute);
-      thisBooking.selectedTable.push(tableId);
+
+      thisBooking.selectedTable = parseInt(tableId);
 
       console.log('selected table id', thisBooking.selectedTable)
 
@@ -191,6 +193,22 @@ class Booking {
       }
     }
     thisBooking.clearSelected();
+    console.log(thisBooking)
+  }
+
+  getElements() {
+    const thisBooking = this;
+
+    thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
+    thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
+    thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
+    thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
+    thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+    thisBooking.dom.tablesContainer = thisBooking.dom.wrapper.querySelector(select.containerOf.tables);
+    thisBooking.dom.phoneInput = thisBooking.dom.wrapper.querySelector(select.booking.phoneInput);
+    thisBooking.dom.addressInput = thisBooking.dom.wrapper.querySelector(select.booking.addressInput);
+    thisBooking.dom.checkboxes = thisBooking.dom.wrapper.querySelectorAll(select.booking.starterCheckboxes);
+    thisBooking.dom.form = thisBooking.dom.wrapper.querySelector(select.booking.form);
   }
 
   render(wrapper) {
@@ -202,42 +220,84 @@ class Booking {
     thisBooking.dom.wrapper = wrapper;
     thisBooking.dom.wrapper.innerHTML = generatedHTML;
 
-    thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
-    thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
-    thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
-    thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
-    thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
-    thisBooking.dom.tablesContainer = thisBooking.dom.wrapper.querySelector(select.containerOf.tables);
 
   }
 
   initWidgets() {
     const thisBooking = this;
+    thisBooking.tablesWidget = thisBooking.dom.tablesContainer;
 
     thisBooking.peopleAmountWidget = new AmountWidget(thisBooking.dom.peopleAmount);
     thisBooking.hoursAmountWidget = new AmountWidget(thisBooking.dom.hoursAmount)
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
     thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
-    thisBooking.tablesWidget = thisBooking.dom.tablesContainer;
-    thisBooking.selectedTable = [];
 
+    thisBooking.selectedTable = null;
 
     thisBooking.tablesWidget.addEventListener('click', (event) => {
       console.log(event.target)
       thisBooking.initTables(event);
     })
 
-    //thisBooking.dom.peopleAmount.addEventListener('updated', () => { })
-
-    //thisBooking.dom.hoursAmount.addEventListener('updated', () => { })
-
     thisBooking.dom.wrapper.addEventListener('updated', () => {
       thisBooking.updateDOM();
     })
 
+    thisBooking.dom.form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      console.log('form submitted');
+      thisBooking.sendBooking();
+    })
+
+
   }
 
 
+
+  sendBooking() {
+    const thisBooking = this;
+
+    const url = settings.db.url + '/' + settings.db.booking;
+    const payload = {
+      date: thisBooking.date,
+      hour: thisBooking.hourPicker.value,
+      table: thisBooking.selectedTable,
+      duration: thisBooking.hoursAmountWidget.correctValue,
+      ppl: thisBooking.peopleAmountWidget.correctValue,
+      starters: [],
+      phone: thisBooking.dom.phoneInput.value,
+      address: thisBooking.dom.addressInput.value
+
+    }
+
+    const checkboxes = thisBooking.dom.checkboxes
+    checkboxes.forEach((checkbox) => {
+      if (checkbox.checked) {
+        payload.starters.push(checkbox.value);
+      } else {
+        payload.starters = payload.starters.filter((value) => value !== checkbox.value);
+      }
+    });
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    };
+
+
+    // why is this sending multiple times?
+    fetch(url, options)
+      .then(response => response.json())
+      .then(parsedResponse => {
+        thisBooking.makeBooked(parsedResponse.date, parsedResponse.hour, parsedResponse.duration, parsedResponse.table)
+        thisBooking.updateDOM();
+        console.log('newBooked', thisBooking.booked)
+        console.log(parsedResponse)
+      })
+  }
 }
 
 export default Booking;

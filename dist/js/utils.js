@@ -78,5 +78,7 @@ utils.addDays = function (dateStr, days) {
   return dateObj;
 };
 
+utils.emptyArrayToNull = array => array.length !== 0 ? array : null;
+
 
 export default utils;
