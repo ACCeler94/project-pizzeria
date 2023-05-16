@@ -1,0 +1,123 @@
+.home-page {
+  margin: 42px auto;
+  padding: 72px 48px;
+  background: #fff;
+  border-bottom: 1px solid #e6e6e6;
+  border-radius: 4px;
+  box-sizing: border-box;
+
+  .sub-page-box-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .opening-hours {
+      width: 100%;
+      height: 120px;
+      border-radius: 5px;
+      text-align: center;
+      background-color: $color-main;
+      color: $color-light;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+
+      p {
+        margin: 0;
+        font-size: 1em;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 1.4em;
+      }
+    }
+
+    .sub-page-box {
+      width: 49%;
+      max-height: 130px;
+      position: relative;
+
+
+      img {
+        width: 100%;
+        height: 120px;
+        filter: brightness(40%) grayscale(100%);
+        border-radius: 5px;
+      }
+
+      .sub-page-box-link {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-decoration: none;
+        color: $color-light;
+        font-size: 1.4em;
+        font-weight: bold;
+        transition: top 0.5s ease;
+      }
+
+      p {
+        position: absolute;
+        color: $color-light;
+        top: 60%;
+        left: 50%;
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-50%, 100%);
+        transition: all 0.75s ease;
+        margin: 5% 0;
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    .sub-page-box:hover {
+      .sub-page-box-link {
+        top: 40%;
+      }
+
+      p {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  .main-carousel {
+    height: 300px;
+    margin: 10% 0;
+
+    .carousel-cell {
+      display: flex;
+      height: 100%;
+      align-items: center;
+
+      .carousel-text {
+        padding: 5%;
+
+        h4 {
+          font-size: 1.2em
+        }
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 70%;
+    }
+
+
+    .flickity-viewport {
+      height: 90% !important;
+    }
+
+    .flickity-page-dots {
+      bottom: 0 !important;
+    }
+  }
+}

@@ -219,8 +219,6 @@ class Booking {
 
     thisBooking.dom.wrapper = wrapper;
     thisBooking.dom.wrapper.innerHTML = generatedHTML;
-
-
   }
 
   initWidgets() {
