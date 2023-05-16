@@ -11,7 +11,7 @@ const app = {
     const thisApp = this;
 
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
-    thisApp.navLinks = document.querySelectorAll(select.nav.links)
+    thisApp.navLinks = document.querySelectorAll(select.nav.links);
 
 
     const idFromHash = window.location.hash.replace('#/', '');
@@ -29,7 +29,7 @@ const app = {
 
     for (let link of thisApp.navLinks) {
       link.addEventListener('click', (event) => {
-        const clickedElement = event.currentTarget; // ??? why this if its causing an error? 
+        const clickedElement = event.currentTarget;
         event.preventDefault();
 
         /* get page id from href attribute */
@@ -119,6 +119,28 @@ const app = {
     const homePageContainer = document.querySelector(select.containerOf.homePage)
 
     thisApp.homePage = new Home(homePageContainer);
+
+    thisApp.buttonLinks = document.querySelectorAll(select.nav.buttonLinks)
+
+
+
+    for (let link of thisApp.buttonLinks) {
+      link.addEventListener('click', (event) => {
+        const clickedElement = event.currentTarget;
+        event.preventDefault();
+
+        /* get page id from href attribute */
+        const id = clickedElement.getAttribute('href').replace('#', '')
+        /* call activatePage method with that id */
+
+        thisApp.activatePage(id);
+
+        /* change URL hash */
+        window.location.hash = '#/' + id;
+
+      })
+    }
+
   },
 
   init: function () {
@@ -131,9 +153,10 @@ const app = {
 
     thisApp.initPages();
     thisApp.initData();
+    thisApp.initHomePage();
     thisApp.initCart();
     thisApp.initBooking();
-    thisApp.initHomePage();
+
   },
 };
 

@@ -204,28 +204,67 @@
   ],
   "orders": [
     {
-      "address": "t4",
-      "phone": "54t",
-      "totalPrice": 29,
-      "subtotalPrice": 9,
-      "totalNumber": 1,
-      "products": [],
+      "address": "test",
+      "phone": "test",
+      "totalPrice": 65,
+      "subtotalPrice": 45,
+      "totalNumber": 5,
+      "products": [
+        {
+          "id": "cake",
+          "amount": 3,
+          "price": 27,
+          "priceSingle": 9,
+          "name": "Zio Stefano's Doughnut",
+          "params": {}
+        },
+        {
+          "id": "breakfast",
+          "amount": 2,
+          "price": 18,
+          "priceSingle": 9,
+          "name": "Zia Giulia's Breakfast",
+          "params": {
+            "coffee": {
+              "label": "Coffee type",
+              "options": {
+                "macchiato": "Macchiato "
+              }
+            }
+          }
+        }
+      ],
       "id": 1
     },
     {
       "address": "test",
       "phone": "test",
-      "totalPrice": 38,
-      "subtotalPrice": 18,
-      "totalNumber": 2,
+      "totalPrice": 65,
+      "subtotalPrice": 45,
+      "totalNumber": 5,
       "products": [
         {
           "id": "cake",
-          "amount": 2,
-          "price": 18,
+          "amount": 3,
+          "price": 27,
           "priceSingle": 9,
           "name": "Zio Stefano's Doughnut",
           "params": {}
+        },
+        {
+          "id": "breakfast",
+          "amount": 2,
+          "price": 18,
+          "priceSingle": 9,
+          "name": "Zia Giulia's Breakfast",
+          "params": {
+            "coffee": {
+              "label": "Coffee type",
+              "options": {
+                "macchiato": "Macchiato "
+              }
+            }
+          }
         }
       ],
       "id": 2
@@ -304,14 +343,28 @@
     },
     {
       "date": "2023-05-16",
-      "hour": "17:00",
+      "hour": "20:30",
+      "table": 1,
+      "duration": 1,
+      "ppl": 1,
+      "starters": [
+        "water",
+        "bread"
+      ],
+      "phone": "test2",
+      "address": "test2",
+      "id": 2
+    },
+    {
+      "date": "2023-05-16",
+      "hour": "12:00",
       "table": 1,
       "duration": 1,
       "ppl": 1,
       "starters": [],
-      "phone": "test",
-      "address": "test",
-      "id": 2
+      "phone": "test2",
+      "address": "test2",
+      "id": 3
     }
   ]
 }

@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
   <link rel="stylesheet" href="./vendor/range-slider.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -87,56 +87,133 @@
 
   <!-- home page template-->
   <script id="template-home-page" type="text/x-handlebars-template">
-    <div class="hero">
+    <section class="hero">
       <div class="sub-page-box-container">
-        <div class="sub-page-box">
-          <img src="./images/general images/order-background.jpg" alt="order background image">
-          <a class="sub-page-box-link" href="#order">ORDER ONLINE</a>
-          <p>Delicious food delivered to Your door</p>
-        </div>
-        <div class="sub-page-box">
-          <img src="./images/general images/booking-background.jpg" alt="booking background image">
-          <a class="sub-page-box-link" href="#booking">BOOK A TABLE</a>
-          <p>A table in our restaurant, just for You</p>
-        </div>
+        <a href="#order" class="sub-page-box button-link">
+          <div>
+            <img src="./images/general images/order-background.jpg" alt="order background image">
+            <h3 class="sub-page-box-header" href="#order">ORDER ONLINE</h3>
+            <p>Delicious food delivered to Your door</p>
+          </div>
+        </a>
+        <a href="#booking" class="sub-page-box button-link">
+          <div>
+            <img src="./images/general images/booking-background.jpg" alt="booking background image">
+            <h3 class="sub-page-box-header" href="#booking">BOOK A TABLE</h3>
+            <p>A table in our restaurant, just for You</p>
+          </div>
+          </a>
         <div class="opening-hours">
           <h3>OPENING HOURS</h3>
           <p>TUE-SUN 12PM-12AM</p>
         </div>
       </div>
-    </div>
-    <div class="main-carousel">
-      <div class="carousel-cell">
-        <img src="./images/general images/carousel-image.jpg" alt="people in restaurant carousel image">
-        <div class="carousel-text">
-          <h4>Amazing Service!</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <p>- Ozzy Osbourne</p>
+    </section>
+    <section class="carousel">
+      <div class="main-carousel">
+        <div class="carousel-cell">
+          <img src="./images/general images/carousel-image.jpg" alt="people in restaurant carousel image">
+          <div class="carousel-text">
+            <h4>Amazing Service!</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <p>- Ozzy Osbourne</p>
+          </div>
+        </div>
+        <div class="carousel-cell">
+          <img src="./images/general images/carousel-image.jpg" alt="people in restaurant carousel image">
+          <div class="carousel-text">
+            <h4>Amazing Service!</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <p>- Ozzy Osbourne</p>
+          </div>
+        </div>
+        <div class="carousel-cell">
+          <img src="./images/general images/carousel-image.jpg" alt="people in restaurant carousel image">
+          <div class="carousel-text">
+            <h4>Amazing Service!</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <p>- Ozzy Osbourne</p>
+          </div>
         </div>
       </div>
-      <div class="carousel-cell">
-        <img src="./images/general images/carousel-image.jpg" alt="people in restaurant carousel image">
-        <div class="carousel-text">
-          <h4>Amazing Service!</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <p>- Ozzy Osbourne</p>
+    </section>
+    <section class="gallery">
+      <div class="gallery-item">
+        <img src="./images/general images/gallery images/pizza-box.jpg" alt="pizza boxes">
+        <div class="icons">
+          <a href="#">
+            <i class="fa-solid fa-heart"></i>
+          </a>
+          <a href="#">
+            <i class="fa-solid fa-share-nodes"></i>
+          </a>
         </div>
       </div>
-      <div class="carousel-cell">
-        <img src="./images/general images/carousel-image.jpg" alt="people in restaurant carousel image">
-        <div class="carousel-text">
-          <h4>Amazing Service!</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <p>- Ozzy Osbourne</p>
+      <div class="gallery-item">
+        <img src="./images/general images/gallery images/wine-photo.jpg" alt="pizza and wine">
+        <div class="icons">
+          <a href="#">
+            <i class="fa-solid fa-heart"></i>
+          </a>
+          <a href="#">
+            <i class="fa-solid fa-share-nodes"></i>
+          </a>
         </div>
       </div>
-    </div>
+      <div class="gallery-item">
+        <img src="./images/general images/gallery images/pizza-photo.jpg" alt="pizza photo">
+        <div class="icons">
+          <a href="#">
+            <i class="fa-solid fa-heart"></i>
+          </a>
+          <a href="#">
+            <i class="fa-solid fa-share-nodes"></i>
+          </a>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="./images/general images/gallery images/pizza-making.jpg" alt="making pizza photo">
+        <div class="icons">
+          <a href="#">
+            <i class="fa-solid fa-heart"></i>
+          </a>
+          <a href="#">
+            <i class="fa-solid fa-share-nodes"></i>
+          </a>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="./images/general images/gallery images/italian-salad.jpg" alt="italian salad">
+        <div class="icons">
+          <a href="#">
+            <i class="fa-solid fa-heart"></i>
+          </a>
+          <a href="#">
+            <i class="fa-solid fa-share-nodes"></i>
+          </a>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="./images/general images/gallery images/open-sign-photo.jpg" alt="open sign">
+        <div class="icons">
+          <a href="#">
+            <i class="fa-solid fa-heart"></i>
+          </a>
+          <a href="#">
+            <i class="fa-solid fa-share-nodes"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+    <section class="more-info">
+      <a href="#">View more on instagram</a>
+    </section>
   </script>
 
   <script id="template-cart-product" type="text/x-handlebars-template">

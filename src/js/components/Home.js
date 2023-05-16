@@ -28,8 +28,6 @@ class Home {
     })
   }
 
-
-
   render(wrapper) {
     const thisHome = this;
     const generatedHTML = templates.homePage();

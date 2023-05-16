@@ -56,6 +56,7 @@ export const select = {
   },
   nav: {
     links: '.main-nav a',
+    buttonLinks: '.sub-page-box-container a',
   },
 
 

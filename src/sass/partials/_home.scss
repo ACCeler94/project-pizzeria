@@ -48,7 +48,7 @@
         border-radius: 5px;
       }
 
-      .sub-page-box-link {
+      .sub-page-box-header {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -58,6 +58,7 @@
         font-size: 1.4em;
         font-weight: bold;
         transition: top 0.5s ease;
+        margin: 0;
       }
 
       p {
@@ -69,14 +70,14 @@
         visibility: hidden;
         transform: translate(-50%, 100%);
         transition: all 0.75s ease;
-        margin: 5% 0;
+        margin: 0;
         width: 100%;
         text-align: center;
       }
     }
 
     .sub-page-box:hover {
-      .sub-page-box-link {
+      .sub-page-box-header {
         top: 40%;
       }
 
@@ -120,4 +121,70 @@
 
 .carousel-text h4 {
   font-size: 1.2em;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+
+
+  .gallery-item {
+    width: 33.3%;
+    height: 200px;
+    padding: 1%;
+    position: relative;
+
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+      transition: all 0.75s ease;
+    }
+
+    .icons {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+.icons a {
+  visibility: hidden;
+
+}
+
+.icons i {
+  font-size: 1.75em;
+  margin: 0 5%;
+  color: $color-light;
+}
+
+.gallery-item:hover {
+  img {
+    filter: brightness(40%);
+  }
+
+  .icons {
+    a {
+      visibility: visible;
+    }
+  }
+}
+
+.icons i:hover {
+  color: $color-main;
+}
+
+.more-info {
+  margin-top: 3%;
+
+  a {
+    margin-top: 10%;
+    color: $color-main;
+  }
 }

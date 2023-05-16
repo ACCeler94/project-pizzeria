@@ -77,9 +77,6 @@ class Cart {
     };
 
 
-
-
-
     fetch(url, options)
       .then(response => response.json())
       .then(parsedResponse => console.log('parsedResponse', parsedResponse))
