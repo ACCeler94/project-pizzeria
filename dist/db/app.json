@@ -206,68 +206,41 @@
     {
       "address": "test",
       "phone": "test",
-      "totalPrice": 65,
-      "subtotalPrice": 45,
-      "totalNumber": 5,
+      "totalPrice": 62,
+      "subtotalPrice": 42,
+      "totalNumber": 4,
       "products": [
         {
           "id": "cake",
-          "amount": 3,
-          "price": 27,
+          "amount": 2,
+          "price": 18,
           "priceSingle": 9,
           "name": "Zio Stefano's Doughnut",
           "params": {}
         },
         {
-          "id": "breakfast",
+          "id": "salad",
           "amount": 2,
-          "price": 18,
-          "priceSingle": 9,
-          "name": "Zia Giulia's Breakfast",
+          "price": 24,
+          "priceSingle": 12,
+          "name": "Nonno Alberto's Salad",
           "params": {
-            "coffee": {
-              "label": "Coffee type",
+            "ingredients": {
+              "label": "Ingredients",
               "options": {
-                "macchiato": "Macchiato "
+                "cucumber": "Cucumber",
+                "tomatoes": "Tomatoes",
+                "olives": "Olives",
+                "feta": "Feta cheese",
+                "cheese": "Cheese",
+                "herbs": "Fresh herbs",
+                "pepper": "Black pepper"
               }
             }
           }
         }
       ],
       "id": 1
-    },
-    {
-      "address": "test",
-      "phone": "test",
-      "totalPrice": 65,
-      "subtotalPrice": 45,
-      "totalNumber": 5,
-      "products": [
-        {
-          "id": "cake",
-          "amount": 3,
-          "price": 27,
-          "priceSingle": 9,
-          "name": "Zio Stefano's Doughnut",
-          "params": {}
-        },
-        {
-          "id": "breakfast",
-          "amount": 2,
-          "price": 18,
-          "priceSingle": 9,
-          "name": "Zia Giulia's Breakfast",
-          "params": {
-            "coffee": {
-              "label": "Coffee type",
-              "options": {
-                "macchiato": "Macchiato "
-              }
-            }
-          }
-        }
-      ],
-      "id": 2
     }
   ],
   "events": [
@@ -343,7 +316,31 @@
     },
     {
       "date": "2023-05-16",
-      "hour": "20:30",
+      "hour": "19:00",
+      "table": null,
+      "duration": 1,
+      "ppl": 1,
+      "starters": [],
+      "phone": "test",
+      "address": "test",
+      "id": 2
+    },
+    {
+      "date": "2023-05-16",
+      "hour": "19:00",
+      "table": null,
+      "duration": 1,
+      "ppl": 1,
+      "starters": [
+        "bread"
+      ],
+      "phone": "test2",
+      "address": "test2",
+      "id": 3
+    },
+    {
+      "date": "2023-05-16",
+      "hour": "20:00",
       "table": 1,
       "duration": 1,
       "ppl": 1,
@@ -351,20 +348,36 @@
         "water",
         "bread"
       ],
-      "phone": "test2",
-      "address": "test2",
-      "id": 2
+      "phone": "test3",
+      "address": "test3",
+      "id": 4
     },
     {
       "date": "2023-05-16",
-      "hour": "12:00",
-      "table": 1,
+      "hour": "21:30",
+      "table": 2,
       "duration": 1,
       "ppl": 1,
-      "starters": [],
-      "phone": "test2",
-      "address": "test2",
-      "id": 3
+      "starters": [
+        "bread"
+      ],
+      "phone": "test4",
+      "address": "test4",
+      "id": 5
+    },
+    {
+      "date": "2023-05-16",
+      "hour": "21:30",
+      "table": 1,
+      "duration": 2,
+      "ppl": 2,
+      "starters": [
+        "water",
+        "bread"
+      ],
+      "phone": "test5",
+      "address": "test5",
+      "id": 6
     }
   ]
 }
