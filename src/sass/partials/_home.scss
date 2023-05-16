@@ -99,10 +99,6 @@
 
       .carousel-text {
         padding: 5%;
-
-        h4 {
-          font-size: 1.2em
-        }
       }
     }
 
@@ -120,4 +116,8 @@
       bottom: 0 !important;
     }
   }
+}
+
+.carousel-text h4 {
+  font-size: 1.2em;
 }
